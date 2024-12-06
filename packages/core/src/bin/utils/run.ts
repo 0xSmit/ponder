@@ -103,7 +103,7 @@ export async function run({
       switch (event.type) {
         case "block": {
           const result = await handleEvents(
-            decodeEvents(common, sources, event.events),
+            await decodeEvents(common, sources, event.events),
             event.checkpoint,
           );
 
@@ -180,7 +180,7 @@ export async function run({
       end = checkpoint;
 
       const result = await handleEvents(
-        decodeEvents(common, sources, events),
+        await decodeEvents(common, sources, events),
         checkpoint,
       );
       await metadataStore.setStatus(sync.getStatus());

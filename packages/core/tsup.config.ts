@@ -3,7 +3,11 @@ import { defineConfig } from "tsup";
 
 export default defineConfig({
   name: "@ponder/core",
-  entry: ["src/index.ts", "src/bin/ponder.ts"],
+  entry: {
+    index: "src/index.ts",
+    "bin/ponder": "src/bin/ponder.ts",
+    "sync/eventDecoderWorker": "src/sync/eventDecoderWorker.ts",
+  },
   outDir: "dist",
   format: ["esm"],
   sourcemap: true,
